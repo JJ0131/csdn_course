@@ -4,8 +4,8 @@ class Human(object):
     Human has name and gender
     '''
     # Class level attribute
+    # these codes will always execute when the class is instantiated
     planet = 'Earth'
-    print('Can I print something in class definition?')
 
     # I don't think it's good practice to use class level method though
     # You'd rather make it an independent function in the module
@@ -19,9 +19,15 @@ class Human(object):
         self.__name = name
         self.__gender = gender
 
-    def show_yourself(self):
+    def info(self):
         print(f'My name is {self.__name} and I am a {self.__gender}.')
 
+    # since the attribute is private, child class could not get the attributes
+    def get_name(self):
+        return self.__name
+
+    def get_gender(self):
+        return self.__gender
 
 def main():
     print('Class level attribute:')
@@ -48,7 +54,7 @@ def main():
     # so class level method can only be used on class level
     Human.class_level_method()
 
-    me.show_yourself()
+    me.info()
 
 
 if __name__ == '__main__':
